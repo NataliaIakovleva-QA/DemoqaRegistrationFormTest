@@ -4,17 +4,16 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byId;
+
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class RegistrationFormTest {
 
@@ -22,8 +21,8 @@ public class RegistrationFormTest {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1450х950";
-        Configuration.holdBrowserOpen = true;
-        Configuration.pageLoadTimeout = 600000;
+        Configuration.holdBrowserOpen = false;
+        Configuration.pageLoadStrategy = "eager";
     }
 
     public void selectDate(String day, String month, String year) {
@@ -83,12 +82,12 @@ public class RegistrationFormTest {
         $("#firstName").setValue("Natalia");
         $("#lastName").setValue("Iakovleva");
         $("#userEmail").setValue("nata@test.com");
-        $(byText("Female")).click();
+        executeJavaScript("arguments[0].click();", $("#gender-radio-2"));
         $("#userNumber").setValue("6666666666");
         selectDate("22", "May", "1990");
         selectEnglishFromAutoComplete();
-        $(byText("Music")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/testPicture.jpg"));
+        executeJavaScript("arguments[0].click();", $("#hobbies-checkbox-3"));
+        $("#uploadPicture").uploadFromClasspath(("testPicture.jpg"));
         $("#currentAddress").setValue("Lenina st., 45");
         $("#submit").scrollTo();
         selectStateFromAutoComplete();
