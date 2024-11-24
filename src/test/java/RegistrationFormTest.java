@@ -82,11 +82,11 @@ public class RegistrationFormTest {
         $("#firstName").setValue("Natalia");
         $("#lastName").setValue("Iakovleva");
         $("#userEmail").setValue("nata@test.com");
-        executeJavaScript("arguments[0].click();", $("#gender-radio-2"));
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("6666666666");
         selectDate("22", "May", "1990");
         selectEnglishFromAutoComplete();
-        executeJavaScript("arguments[0].click();", $("#hobbies-checkbox-3"));
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath(("testPicture.jpg"));
         $("#currentAddress").setValue("Lenina st., 45");
         $("#submit").scrollTo();
