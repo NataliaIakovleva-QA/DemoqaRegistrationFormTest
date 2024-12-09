@@ -29,7 +29,11 @@ public class RegistrationPage extends BasePage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        this.removeBanners();
+        return this;
+    }
+
+    public RegistrationPage removeBanners() {
+        super.removeBanners0();
         return this;
     }
 

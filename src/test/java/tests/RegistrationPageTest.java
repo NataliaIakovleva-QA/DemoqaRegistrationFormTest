@@ -10,6 +10,7 @@ public class RegistrationPageTest extends TestBase {
     @Test
     void fillFormTest() {
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Natalia")
                 .setLastName("Iakovleva")
                 .setUserEmail("nata@ya.com")
@@ -40,6 +41,7 @@ public class RegistrationPageTest extends TestBase {
     @Test
     void minimalFillFormTest() {
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Natalia")
                 .setLastName("Iakovleva")
                 .setUserEmail("nata@ya.com")
@@ -58,6 +60,7 @@ public class RegistrationPageTest extends TestBase {
     @Test
     void negativeFillFormTest() {
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Natalia")
                 .setLastName("Iakovleva")
                 .setUserEmail("nata@ya.com")

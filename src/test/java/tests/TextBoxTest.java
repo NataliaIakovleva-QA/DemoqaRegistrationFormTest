@@ -9,6 +9,7 @@ public class TextBoxTest extends TestBase {
     @Test
     void fillTextBoxForm() {
         textBoxPage.openPage()
+                .removeBanners()
                 .setFullName("Natalia Iakovleva")
                 .setUserEmail("nata@ya.com")
                 .setCurrentAddress("Lenina Street, 25")

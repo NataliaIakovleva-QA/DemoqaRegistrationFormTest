@@ -17,7 +17,11 @@ public class TextBoxPage extends BasePage {
 
     public TextBoxPage openPage() {
         open("/text-box");
-        this.removeBanners();
+        return this;
+    }
+
+    public TextBoxPage removeBanners() {
+        super.removeBanners0();
         return this;
     }
 
