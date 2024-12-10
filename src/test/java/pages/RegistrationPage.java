@@ -8,7 +8,7 @@ import pages.components.TableComponent;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationPage extends BasePage {
+public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     TableComponent tableComponent = new TableComponent();
 
@@ -32,8 +32,9 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public RegistrationPage removeBanners() {
-        super.removeBanners0();
+    public RegistrationPage removeBanner() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         return this;
     }
 
@@ -111,8 +112,8 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public RegistrationPage verifyUserNumberFieldIsRed() {
-        userNumberInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
+    public RegistrationPage verifyEmailFieldIsRed() {
+        userEmailInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 

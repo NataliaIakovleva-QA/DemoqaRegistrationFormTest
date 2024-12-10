@@ -2,73 +2,75 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import utils.TestData;
 
 
 public class RegistrationPageTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
 
     @Test
     void fillFormTest() {
         registrationPage.openPage()
-                .removeBanners()
-                .setFirstName("Natalia")
-                .setLastName("Iakovleva")
-                .setUserEmail("nata@ya.com")
-                .selectGender("Female")
-                .setUserNumber("6666666666")
-                .setDateOfBirth("23", "November", "1993")
-                .selectSubjectInput("English")
-                .selectHobbies("Music")
-                .setUserPicture("testPicture.jpg")
-                .setCurrentAddress("Lenina Street, 25")
-                .selectState("NCR")
-                .selectCity("Delhi")
+                .removeBanner()
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(testData.userEmail)
+                .selectGender(testData.gender)
+                .setUserNumber(testData.telephoneNumber)
+                .setDateOfBirth(testData.userBirthDay, testData.userBirthMonth, testData.userBirthYear)
+                .selectSubjectInput(testData.subject)
+                .selectHobbies(testData.hobbies)
+                .setUserPicture(testData.picture)
+                .setCurrentAddress(testData.userAddress)
+                .selectState(testData.userState)
+                .selectCity(testData.userCity)
                 .pressSubmit()
 
-                .checkResult("Student Name", "Natalia Iakovleva")
-                .checkResult("Student Email", "nata@ya.com")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "6666666666")
-                .checkResult("Date of Birth", "23 November,1993")
-                .checkResult("Subjects", "English")
-                .checkResult("Hobbies", "Music")
-                .checkResult("Picture", "testPicture.jpg")
-                .checkResult("Address", "Lenina Street, 25")
-                .checkResult("State and City", "NCR Delhi");
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.telephoneNumber)
+                .checkResult("Date of Birth", testData.userBirthDay + " " +  testData.userBirthMonth + "," + testData.userBirthYear)
+                .checkResult("Subjects", testData.subject)
+                .checkResult("Hobbies", testData.hobbies)
+                .checkResult("Picture", testData.picture)
+                .checkResult("Address", testData.userAddress)
+                .checkResult("State and City", testData.userState + " " + testData.userCity);
 
     }
 
     @Test
     void minimalFillFormTest() {
         registrationPage.openPage()
-                .removeBanners()
-                .setFirstName("Natalia")
-                .setLastName("Iakovleva")
-                .setUserEmail("nata@ya.com")
-                .selectGender("Female")
-                .setUserNumber("6666666666")
-                .setDateOfBirth("23", "November", "1993")
+                .removeBanner()
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(testData.userEmail)
+                .selectGender(testData.gender)
+                .setUserNumber(testData.telephoneNumber)
+                .setDateOfBirth(testData.userBirthDay, testData.userBirthMonth, testData.userBirthYear)
                 .pressSubmit()
 
-                .checkResult("Student Name", "Natalia Iakovleva")
-                .checkResult("Student Email", "nata@ya.com")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "6666666666")
-                .checkResult("Date of Birth", "23 November,1993");
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.telephoneNumber)
+                .checkResult("Date of Birth", testData.userBirthDay + " " +  testData.userBirthMonth + "," + testData.userBirthYear);
     }
 
     @Test
     void negativeFillFormTest() {
         registrationPage.openPage()
-                .removeBanners()
-                .setFirstName("Natalia")
-                .setLastName("Iakovleva")
-                .setUserEmail("nata@ya.com")
-                .selectGender("Female")
-                .setUserNumber("66666")
-                .setDateOfBirth("23", "November", "1993")
+                .removeBanner()
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(" ")
+                .selectGender(testData.gender)
+                .setUserNumber(testData.telephoneNumber)
+                .setDateOfBirth(testData.userBirthDay, testData.userBirthMonth, testData.userBirthYear)
                 .pressSubmit()
-                .verifyUserNumberFieldIsRed();
+                .verifyEmailFieldIsRed();
 
     }
 
