@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.TestData;
@@ -10,6 +11,7 @@ public class RegistrationPageTest extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @Tag("demoqa")
     void fillFormTest() {
         registrationPage.openPage()
                 .removeBanner()
@@ -41,6 +43,7 @@ public class RegistrationPageTest extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void minimalFillFormTest() {
         registrationPage.openPage()
                 .removeBanner()
@@ -60,6 +63,7 @@ public class RegistrationPageTest extends TestBase {
     }
 
     @Test
+    @Tag("demoqa")
     void negativeFillFormTest() {
         registrationPage.openPage()
                 .removeBanner()
