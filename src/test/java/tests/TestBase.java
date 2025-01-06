@@ -14,14 +14,14 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        System.out.println(System.getProperties());
+        // System.out.println(System.getProperties());
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://user1:1234@" + System.getProperty("remoteHost") + "/wd/hub";
         Configuration.browser = System.getProperty("browser");
-//        Configuration.browserVersion = System.getProperty("browserVersion", "91.0");
+        Configuration.browserVersion = System.getProperty("browserVersion", "126");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
